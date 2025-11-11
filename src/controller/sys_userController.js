@@ -32,17 +32,13 @@ const login = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
+  // 1. Validar resultados do express-validator (aplicado na rota)
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   const { name, login_email, password, user_type } = req.body;
-
-  if (!name || !login_email || !password || !user_type) {
-    return res
-      .status(400)
-      .json({ message: "Todos os campos são obrigatórios" });
-  }
-
-  if (typeof password !== "string") {
-    return res.status(400).json({ message: "Senha deve ser uma string" });
-  }
 
   try {
     const userCount = await User.count();
@@ -82,7 +78,6 @@ const createUser = async (req, res) => {
     res.status(500).json({ message: "Erro ao criar usuário" });
   }
 };
-
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll({
