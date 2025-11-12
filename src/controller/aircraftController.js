@@ -1,4 +1,4 @@
-import Aircraft from "../models/aircraft.js";
+import Aircraft from "../../src/model/aircraft.js";
 
 const getAllAircrafts = async (req, res) => {
   try {

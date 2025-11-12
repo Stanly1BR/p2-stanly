@@ -2,7 +2,7 @@ import db from "../../db.js";
 import { DataTypes } from "sequelize";
 import Aircraft from "./aircraft.js";
 
-const Flight = sequelize.define(
+const Flight = db.define(
   "Flight",
   {
     flight_id: {

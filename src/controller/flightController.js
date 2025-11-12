@@ -1,5 +1,5 @@
-import Flight from "../models/flight.js";
-import Aircraft from "../models/aircraft.js";
+import Flight from "../../src/model/flight.js";
+import Aircraft from "../../src/model/aircraft.js";
 
 const getAllFlights = async (req, res) => {
   try {

@@ -1,7 +1,7 @@
 import db from "../../db.js";
 import { DataTypes } from "sequelize";
 
-const Passenger = sequelize.define(
+const Passenger = db.define(
   "Passenger",
   {
     passenger_id: {

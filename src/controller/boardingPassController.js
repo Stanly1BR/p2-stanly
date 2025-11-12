@@ -1,7 +1,7 @@
-import BoardingPass from "../models/boardingPass.js";
-import Passenger from "../models/passenger.js";
-import Flight from "../models/flight.js";
-import Aircraft from "../models/aircraft.js";
+import BoardingPass from "../../src/model/boardingPass.js";
+import Passenger from "../../src/model/passenger.js";
+import Flight from "../../src/model/flight.js";
+import Aircraft from "../../src/model/aircraft.js";
 
 const getAllBoardingPasses = async (req, res) => {
   try {

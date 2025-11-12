@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import BoardingPassController from "../controllers/boardingPassController.js";
+import BoardingPassController from "../controller/boardingPassController.js";
 import authMiddleware from "../middlewares/auth.js";
 
 //Rotas Publicas

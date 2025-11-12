@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize";
 import Flight from "./flight.js";
 import Passenger from "./passenger.js";
 
-const BoardingPass = sequelize.define(
+const BoardingPass = db.define(
   "BoardingPass",
   {
     boarding_pass_id: {

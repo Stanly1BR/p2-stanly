@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import AircraftController from "../controllers/aircraftController.js";
+import AircraftController from "../controller/aircraftController.js";
 import authMiddleware from "../middlewares/auth.js";
 
 //Rotas Publicas

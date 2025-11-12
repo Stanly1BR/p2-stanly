@@ -5,7 +5,7 @@ import routes from "./src/routes/index.js";
 dotenv.config();
 const app = express();
 
-app.use(json());
+app.use(express.json());
 app.use(routes);
 
 const porta = process.env.PORT || 3010;

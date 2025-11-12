@@ -1,7 +1,7 @@
 import db from "../../db.js";
 import { DataTypes } from "sequelize";
 
-const Aircraft = sequelize.define(
+const Aircraft = db.define(
   "Aircraft",
   {
     aircraft_id: {

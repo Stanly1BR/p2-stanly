@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import PassengerController from "../controllers/passengerController.js";
+import PassengerController from "../controller/passengerController.js";
 import authMiddleware from "../middlewares/auth.js";
 
 router.get("/passengers", authMiddleware, PassengerController.getAllPassengers);
