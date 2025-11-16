@@ -4,11 +4,6 @@ import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
 
 const login = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
   const { login_email, password } = req.body;
 
   try {
@@ -16,7 +11,7 @@ const login = async (req, res) => {
     if (!user)
       return res.status(401).json({ message: "Usuário não encontrado" });
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = (await password) === user.password;
     if (!isMatch) return res.status(401).json({ message: "Senha incorreta" });
 
     const token = jwt.sign(
@@ -32,12 +27,6 @@ const login = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  // 1. Validar resultados do express-validator (aplicado na rota)
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
   const { name, login_email, password, user_type } = req.body;
 
   try {

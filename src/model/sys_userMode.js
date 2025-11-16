@@ -14,12 +14,12 @@ const User = db.define(
       allowNull: false,
     },
     login_email: {
-      type: DataTypes.STRING,
+      type: String,
       allowNull: false,
       unique: true,
     },
     password: {
-      type: DataTypes.STRING,
+      type: String,
       allowNull: false,
     },
     user_type: {
