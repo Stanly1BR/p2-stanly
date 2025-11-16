@@ -5,9 +5,25 @@ import { body } from "express-validator";
 
 const router = express.Router();
 
+const loginValidations = [
+  body("login_email").isEmail().withMessage("Email inválido no login"),
+  body("password").notEmpty().withMessage("Senha obrigatória no login"),
+];
+
+const userCreationValidations = [
+  body("name").trim().notEmpty().withMessage("Nome é obrigatório"),
+  body("login_email").isEmail().withMessage("Email inválido"),
+  body("password")
+    .isLength({ min: 5 })
+    .withMessage("Senha deve ter no mínimo 5 caracteres"),
+  body("user_type")
+    .isIn(["admin", "user"])
+    .withMessage('Tipo de usuário inválido. Deve ser "admin" ou "user"'),
+];
+
 //Rotas Publicas
-router.post("/login", UserController.login);
-router.post("/users", UserController.createUser);
+router.post("/login", loginValidations, UserController.login);
+router.post("/users", userCreationValidations, UserController.createUser);
 
 //Rotas Privadas
 router.get("/users", authMiddleware, UserController.getAllUsers);
