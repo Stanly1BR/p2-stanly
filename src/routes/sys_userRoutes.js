@@ -23,11 +23,11 @@ const userCreationValidations = [
 
 //Rotas Publicas
 router.post("/login", loginValidations, UserController.login);
-router.post("/users", userCreationValidations, UserController.createUser);
 
 //Rotas Privadas
 router.get("/users", authMiddleware, UserController.getAllUsers);
 router.get("/users/:id", authMiddleware, UserController.getUserById);
+router.post("/users", userCreationValidations, UserController.createUser);
 router.put("/users/:id", authMiddleware, UserController.updateUser);
 router.delete("/users/:id", authMiddleware, UserController.deleteUser);
 
