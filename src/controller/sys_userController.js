@@ -16,7 +16,8 @@ const login = async (req, res) => {
     if (!user)
       return res.status(401).json({ message: "Usuário não encontrado" });
 
-    const isMatch = (await password) === user.password;
+    const isMatch = await /*(password ===
+      user.password)*/ bcrypt.compare(password, user.password); //mantenha a primeira comparação para conseguir rodar a aplicação corretamente, senão eu teria que apagar as tabelas no banco e fazer de novo para elas serem salvas criptografadas
     if (!isMatch) return res.status(401).json({ message: "Senha incorreta" });
 
     const token = jwt.sign(
